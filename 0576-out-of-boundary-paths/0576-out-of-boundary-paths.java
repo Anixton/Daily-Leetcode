@@ -1,20 +1,31 @@
 class Solution {
-  int M = 1000000007;
+    int MOD = 1_000_000_007;
 
-  public int findPaths(int m, int n, int N, int i, int j) {
-    int[][][] memo = new int[m][n][N + 1];
-    for (int[][] l : memo) for (int[] sl : l) Arrays.fill(sl, -1);
-    return findPaths(m, n, N, i, j, memo);
-  }
+    public int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
+        int[][][] DP = new int[m][n][maxMove+1];
+        for (int[][] l : DP) for (int[] sl : l) Arrays.fill(sl, -1);
+        
+        return dfs(startRow, startColumn, maxMove, m, n, DP);
+    }
 
-  public int findPaths(int m, int n, int N, int i, int j, int[][][] memo) {
-    if (i == m || j == n || i < 0 || j < 0) return 1;
-    if (N == 0) return 0;
-    if (memo[i][j][N] >= 0) return memo[i][j][N];
-    memo[i][j][N] = (
-        (findPaths(m, n, N - 1, i - 1, j, memo) + findPaths(m, n, N - 1, i + 1, j, memo)) % M +
-        (findPaths(m, n, N - 1, i, j - 1, memo) + findPaths(m, n, N - 1, i, j + 1, memo)) % M
-    ) % M;
-    return memo[i][j][N];
-  }
+    private int dfs(int row, int column, int moveCountLeft, int m, int n, int[][][] DP) {
+        if (row < 0 || row == m || column < 0 || column == n) {
+            return 1;
+        }
+        if (moveCountLeft == 0) {
+            return 0;
+        }
+        if (DP[row][column][moveCountLeft] >= 0) {
+            return DP[row][column][moveCountLeft];
+        }
+
+        DP[row][column][moveCountLeft] = (
+            (dfs(row + 1, column, moveCountLeft - 1, m, n, DP) +
+            dfs(row - 1, column, moveCountLeft - 1, m, n, DP)) % MOD +
+            (dfs(row, column + 1, moveCountLeft - 1, m, n, DP) +
+            dfs(row, column - 1, moveCountLeft - 1, m, n, DP)) % MOD
+        ) % MOD;
+
+        return DP[row][column][moveCountLeft];
+    }
 }
