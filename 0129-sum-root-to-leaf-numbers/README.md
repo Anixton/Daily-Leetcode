@@ -23,7 +23,7 @@ Therefore, sum = 12 + 13 = <code>25</code>.
 
 <p><strong class="example">Example 2:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2021/02/19/num2tree.jpg" style="width: 292px; height: 302px;">
-<pre><strong>Input:</strong> root = [4,9,0,5,1]
+<pre data-sider-select-id="1b79f617-6565-4342-b395-6875c18508a9"><strong>Input:</strong> root = [4,9,0,5,1]
 <strong>Output:</strong> 1026
 <strong>Explanation:</strong>
 The root-to-leaf path <code>4-&gt;9-&gt;5</code> represents the number 495.
