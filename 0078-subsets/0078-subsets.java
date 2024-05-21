@@ -3,8 +3,7 @@ class Solution {
     
     private void helper(int[] arr,int index,List<Integer> candidate){
         if(index>=arr.length) {
-            List<Integer> copiedList = new ArrayList<>(candidate);
-            result.add(copiedList);
+            result.add(candidate);
             return;
         }
         
@@ -17,8 +16,7 @@ class Solution {
     }
     
     public List<List<Integer>> subsets(int[] nums) {
-        helper(nums,0,new ArrayList<>());
-        
+        helper(nums,0,new ArrayList<>());   
         return result;
     }
 }
