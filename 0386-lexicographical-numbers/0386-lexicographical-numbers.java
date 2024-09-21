@@ -1,22 +1,22 @@
 class Solution {
-    private List<Integer> result = new ArrayList<>();
+    private List<Integer> numbersInLexicographicalOrder = new ArrayList<>();
     
-    private void helper(String str,int upperLimit){
-        int number = Integer.parseInt(str);
-        if(number>upperLimit) return;
+    private void generateNumbers(String currentNumberPrefix,int upperLimit){
+        int currentNumber = Integer.parseInt(currentNumberPrefix);
+        if (currentNumber > upperLimit) return;
         
-        result.add(number);
+        numbersInLexicographicalOrder.add(currentNumber);
         
-        for(int i=0;i<=9;i++){
-            helper(str+String.valueOf(i),upperLimit);
+        for (int digit = 0; digit <= 9; digit++) {
+            generateNumbers(currentNumberPrefix + digit, upperLimit);
         }
     }
     
-    public List<Integer> lexicalOrder(int n) {
-        for(int i=1;i<=9;i++){
-            helper(String.valueOf(i),n);
+    public List<Integer> lexicalOrder(int upperLimit) {
+        for (int startingDigit = 1; startingDigit <= 9; startingDigit++) {
+            generateNumbers(String.valueOf(startingDigit), upperLimit);
         }
  
-        return result;
+        return numbersInLexicographicalOrder;
     }
 }
