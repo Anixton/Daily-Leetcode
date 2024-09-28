@@ -1,6 +1,6 @@
 <h2><a href="https://leetcode.com/problems/design-circular-deque/">641. Design Circular Deque</a></h2><h3>Medium</h3><hr><div><p>Design your implementation of the circular double-ended queue (deque).</p>
 
-<p>Implement the <code data-sider-select-id="3331ee5e-04b9-4e0b-8300-9cd1ddd26129">MyCircularDeque</code> class:</p>
+<p>Implement the <code>MyCircularDeque</code> class:</p>
 
 <ul>
 	<li><code>MyCircularDeque(int k)</code> Initializes the deque with a maximum size of <code>k</code>.</li>
